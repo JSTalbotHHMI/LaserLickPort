@@ -2,6 +2,8 @@
 
 Minimal pyControl + ATTiny85 project for a combined optical / capacitive lick port.
 
+Code generated with the help of OpenAI Codex.
+
 ## Structure
 
 - `controls_dialogs/` custom pyControl controls dialog
@@ -47,4 +49,4 @@ pyControl to board:
 
 ## License 
 
-This project is licensed under the terms of the MIT open source license. Please refer to the [LICENSE](./LICENSE) for the full terms.
+This project is licensed under the terms of the BSD license included with this project. [LICENSE](./LICENSE)
