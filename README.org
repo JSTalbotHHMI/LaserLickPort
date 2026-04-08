@@ -9,20 +9,14 @@
 - License :: BSD
 - URL :: https://github.com/JSTalbotHHMI/LaserLickPort
 - Author :: Jeff Talbot
-- Email :: Overlord@jstalbot.com, talbotj@janelia.hhmi.org
+- Email :: talbotj@janelia.hhmi.org
 
 
 ** Description
 
-This repository contains the documentation required to order, fabricate, and operate several variations of the Janelia Laser Lickport. Please see the methods paper [here](https://en.wikipedia.org/wiki/Near-infrared_spectroscopy) (link not currently functional) for a full explanation of the detection technology.
+This repository contains the documentation required to order, fabricate, and operate several variations of the Janelia Laser Lickport
 
-The Laser Lickport was devised to be a noiseless lick detection solution for free-roaming mice and rats undergoing electrophysiology recordings. All sensing electronics can be located as far from the subjects as is needed, and the optical components of the detector do not represent a significant hindrance to the movement of the subjects.
-
-The available workshops are:
-
-- **[One hour](./content/1-hour/README.md)** — focused on GitHub Copilot
-- **[Full-day](./content/full-day/README.md)** — a full day-in-the-life of a developer using GitHub for their DevOps processes
-- **[GitHub Actions](./content/github-actions/README.md)** — CI/CD pipelines from running tests to deploying to Azure
+The Laser Lickport was devised to be a noiseless lick detection solution for free-roaming mice and rats undergoing electrophysiology recordings. With this soultion, the electronics of the sensor are moved as far from the test subjects as is needed, and the optical components of the detector do not represent a significant hindrance to the movement of the subjects.
 
 ## License 
 
