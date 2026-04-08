@@ -16,7 +16,7 @@
 
 This repository contains the documentation required to order, fabricate, and operate several variations of the Janelia Laser Lickport
 
-The Laser Lickport was devised to be a noiseless lick detection solution for free-roaming mice and rats undergoing electrophysiology recordings. With this soultion, the electronics of the sensor are moved as far from the test subjects as is needed, and the optical components of the detector do not represent a significant hindrance to the movement of the subjects.
+The Laser Lickport was devised to be a noiseless lick detection solution for free-roaming mice and rats undergoing electrophysiology recordings. With this solution, the electronics of the sensor are moved as far from the test subjects as is needed, and the optical components of the detector do not represent a significant hindrance to the movement of the subjects.
 
 * Quick Start
 
