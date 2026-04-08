@@ -18,10 +18,16 @@ This repository contains the documentation required to order, fabricate, and ope
 
 The Laser Lickport was devised to be a noiseless lick detection solution for free-roaming mice and rats undergoing electrophysiology recordings. With this soultion, the electronics of the sensor are moved as far from the test subjects as is needed, and the optical components of the detector do not represent a significant hindrance to the movement of the subjects.
 
-## License 
+* Quick Start
 
-BSD; Please refer to the [LICENSE](./LICENSE) for the full terms.
+** Basic Setup
 
-## Support
+** Commands
 
-This project is provided as-is, and may be updated over time. If you have questions, please open an issue.
+* Operation
+
+** Capabilities
+
+** Limitations
+
+** Things to Note
