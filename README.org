@@ -5,7 +5,7 @@
 
 * Library Information
 - Name :: Laser Lickport
-- Version :: [[https://github.com/JSTalbotHHMI/LaserLickport/releases][https://img.shields.io/github/v/release/JSTalbotHHMI/LaserLickPort]]
+- Version :: @@html:<a href="https://github.com/JSTalbotHHMI/LaserLickPort/releases"><img src="https://img.shields.io/github/v/release/JSTalbotHHMI/LaserLickPort.svg" alt="GitHub Release"></a>@@
 - License :: BSD
 - URL :: https://github.com/JSTalbotHHMI/LaserLickPort
 - Author :: Jeff Talbot
