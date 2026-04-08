@@ -49,4 +49,4 @@ pyControl to board:
 
 ## License 
 
-This project is licensed under the terms of the BSD license included with this project. [LICENSE](./LICENSE)
+This project is licensed under the terms of the BSD license included with this project. [LICENSE](../LICENSE)
