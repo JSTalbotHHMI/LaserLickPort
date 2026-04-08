@@ -4,8 +4,8 @@
 #+EMAIL: Overlord@jstalbot.com, talbotj@janelia.hhmi.org
 
 * Library Information
-- Name :: laser Lickport
-- Version :: 0.0.1
+- Name :: Laser Lickport
+- Version :: 0.1.0
 - License :: BSD
 - URL :: https://github.com/JSTalbotHHMI/LaserLickPort
 - Author :: Jeff Talbot
