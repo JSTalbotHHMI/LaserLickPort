@@ -12,67 +12,74 @@
 
 ## Description
 
-This repository contains the documentation required to order, fabricate, and operate several variations of the Janelia Laser Lickport.
+This repository contains the files needed to fabricate and use several versions of the Janelia Laser Lickport.
 
-The Laser Lickport was devised to be a noiseless lick detection solution for free-roaming mice and rats undergoing electrophysiology recordings. With this solution, the electronics of the sensor are moved as far from the test subjects as is needed, and the optical components of the detector do not represent a significant hindrance to the movement of the subjects.
+The Laser Lickport was developed as a low-noise lick detection solution for free-roaming mice and rats, especially in electrophysiology setups where the sensing electronics need to be kept away from the animal.
 
-## Quick Start
+## Repository layout
 
-### Basic Setup
+- [`ECAD/`](./ECAD) contains electronics design files.
+- [`MCAD/`](./MCAD) contains mechanical design files.
+- [`Firmware/`](./Firmware) contains the available firmware workflows for `pyControl`, `Bpod`, and `I2C`.
+
+## Choosing a firmware path
+
+The repository currently supports three different usage patterns:
+
+- [`Firmware/pyControl`](./Firmware/pyControl) is the most complete integration and supports optical plus capacitive sensing, live threshold updates, smoothing, and plotting.
+- [`Firmware/Bpod`](./Firmware/Bpod) is the simplest path and provides a TTL-style output from a standalone optical-threshold sketch.
+- [`Firmware/I2C`](./Firmware/I2C) exposes the optical sensor over I2C using an ATTiny85 slave sketch plus the `OptDetect` Arduino library.
+
+If you are not sure where to start, begin with [`Firmware/README.md`](./Firmware/README.md).
+
+## Quick start
 
 1. Clone or download this repository.
-2. Build or obtain the Laser Lickport hardware described by the files in `ECAD/` and `MCAD/`.
-3. Flash the ATTiny85 with the sketch in `pyControl/Sketches/LaserLickPort_ATTiny85/`.
-4. Point your pyControl user folders at this repository's `pyControl/code/api_classes`, `pyControl/code/controls_dialogs`, `pyControl/code/devices`, and `pyControl/code/tasks` folders.
-5. In pyControl, upload `laser_lick_port_task.py` and run it with a `Breakout_1_2` board.
-6. Connect the ATTiny85 serial lines to pyControl `Breakout_1_2` Port 3 UART and provide shared power and ground.
-7. Open the custom controls dialog to set optical threshold, capacitive threshold, averaging window, and which traces are shown in the live feed.
+2. Build or obtain the Laser Lickport hardware described in [`ECAD/`](./ECAD) and [`MCAD/`](./MCAD).
+3. Choose the firmware path that matches your controller and workflow.
+4. Follow the README in that firmware subfolder for setup details.
 
-### Commands
+## pyControl path
 
-- `laser_lick_port_task.py`
-  Task used by pyControl to acquire raw sensor data, apply moving averages, and compute lick states in software.
-- `laser_lick_port_controls.py`
-  Custom controls dialog for changing thresholds, averaging window, and display options during a session.
-- `LaserLickPort_API.py`
-  Live plotting API used to display raw sensor output, thresholds, and lick-state traces.
-- `LaserLickPort_ATTiny85.ino`
-  ATTiny85 firmware that samples the optical and capacitive channels and streams raw data to the pyControl board over UART.
+Choose [`Firmware/pyControl`](./Firmware/pyControl) if you want the richest software integration.
 
-## Operation
+This path currently includes:
 
-The ATTiny85 continuously samples two channels:
+- ATTiny85 firmware that streams optical and capacitive raw values over UART
+- a pyControl task
+- a custom controls dialog
+- a live plotting API
+- pyControl device definitions
 
-- an optical sensor on `ADC2` / `PB4`
-- a capacitive touch sensor on `PB3`
+Use this option when you want live threshold tuning, smoothing, session logging, and visualization.
 
-It streams the raw values to the pyControl board over a binary UART protocol at `57600` baud. The pyControl task then:
+## Bpod path
 
-- applies the moving average chosen in the controls dialog
-- compares the averaged values against the current thresholds
-- generates `optLick` and `capLick` state traces
-- updates the live GUI plots
-- records the processed data to the pyControl data file when the task is run in record mode
+Choose [`Firmware/Bpod`](./Firmware/Bpod) if you want the simplest microcontroller-side implementation.
 
-### Capabilities
+This path currently includes a standalone sketch that:
 
-- Supports simultaneous optical and capacitive lick sensing.
-- Keeps the thresholding logic on the pyControl side so thresholds can be changed live without reflashing the ATTiny85.
-- Provides live plots of raw sensor output, threshold lines, and lick-state traces.
-- Supports adjustable moving-average smoothing in real time from the controls dialog.
-- Includes electronics, mechanical, firmware, and pyControl code in one repository.
+- reads the optical channel on `A2`
+- reads a threshold on `A1`
+- drives a digital output on pin `0`
 
-### Limitations
+Use this option when you only need a binary lick signal for another controller.
 
-- The ATTiny85 streams raw sensor values only; lick detection depends on the pyControl task being active.
-- Sampling and display rate are limited by ATTiny85 acquisition time, SoftwareSerial overhead, and pyControl logging overhead.
-- The pyControl integration currently targets `Breakout_1_2` Port 3 UART.
-- The repository documents the current hardware and firmware revision in this project and may need adaptation for other breakout boards or microcontrollers.
+## I2C path
 
-### Things to Note
+Choose [`Firmware/I2C`](./Firmware/I2C) if you want to integrate the sensor into your own embedded firmware over I2C.
 
-- The top-level repository is organized into `ECAD/`, `MCAD/`, and `pyControl/` so fabrication files and runtime code stay together.
-- The pyControl-side defaults currently use an optical threshold of `700` and a capacitive threshold of `800`.
-- Lick state is computed from the smoothed values, not the unsmoothed raw stream.
-- The ATTiny85 firmware currently sends binary packets containing `optRaw` and `capRaw`; the pyControl task handles averaging, thresholding, and visualization.
-- The project is designed around low-noise operation for electrophysiology setups where the sensing electronics must be kept away from the animal.
+This path currently includes:
+
+- an ATTiny85 I2C slave sketch
+- a simple master example
+- the [`OptDetect`](./Firmware/I2C/OptDetect) Arduino library
+- an Arduino library example in [`Firmware/I2C/OptDetect/examples`](./Firmware/I2C/OptDetect/examples)
+
+Use this option when the lick sensor is one part of a larger Arduino or microcontroller system.
+
+## Notes
+
+- The current `pyControl` implementation supports both optical and capacitive sensing.
+- The current `Bpod` and `I2C` implementations are focused on the optical channel.
+- Thresholding is handled in different places depending on the firmware path, so behavior and flexibility differ by workflow.
