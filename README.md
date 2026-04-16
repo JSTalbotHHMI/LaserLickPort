@@ -14,7 +14,7 @@
 
 This repository contains the files needed to fabricate and use several versions of the Janelia Laser Lickport.
 
-The Laser Lickport was developed as a low-noise lick detection solution for free-roaming mice and rats, especially in electrophysiology setups where the sensing electronics need to be kept away from the animal.
+The Laser Lickport was developed as a noiseless lick detection solution for free-roaming mice and rats, especially in electrophysiology setups where the sensing electronics need to be kept away from the animal.
 
 ## Repository layout
 
