@@ -1,5 +1,10 @@
 #include <OptDetect.h>
 
+// Version identifiers for release tracking.
+#define FIRMWARE_NAME "LaserLickport_I2C_Master"
+#define FIRMWARE_VERSION "0.1.0"
+#define I2C_DATA_FORMAT_VERSION 1
+
 optDetect opticalLickdetect;
 
 const uint8_t OPT_DETECT_ADDRESS = 0x15;

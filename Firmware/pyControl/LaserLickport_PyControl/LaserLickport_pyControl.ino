@@ -1,6 +1,11 @@
 #include <SoftwareSerial.h>
 #include <ADCTouch.h>
 
+// Version identifiers for release tracking.
+#define FIRMWARE_NAME "LaserLickport_pyControl"
+#define FIRMWARE_VERSION "0.1.0"
+#define UART_PROTOCOL_VERSION 1
+
 static const uint8_t OPT_PIN = A2;
 static const uint8_t TOUCH_PIN = PB3;
 static const uint8_t SOFT_RX_PIN = PB0;  // physical pin 5 (old SDA)

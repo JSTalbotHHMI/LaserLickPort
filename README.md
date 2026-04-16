@@ -28,7 +28,7 @@ The repository currently supports three different usage patterns:
 
 - [`Firmware/pyControl`](./Firmware/pyControl) is the most complete integration and supports optical plus capacitive sensing, live threshold updates, smoothing, and plotting.
 - [`Firmware/Bpod`](./Firmware/Bpod) is the simplest path and provides a TTL-style output from a standalone optical-threshold sketch.
-- [`Firmware/I2C`](./Firmware/I2C) exposes the optical sensor over I2C using an ATTiny85 slave sketch plus the `OptDetect` Arduino library.
+- [`Firmware/I2C`](./Firmware/I2C) provides the `OptDetect` Arduino library, with detector-side and host-side example sketches under `OptDetect/examples`.
 
 If you are not sure where to start, begin with [`Firmware/README.md`](./Firmware/README.md).
 
@@ -71,10 +71,9 @@ Choose [`Firmware/I2C`](./Firmware/I2C) if you want to integrate the sensor into
 
 This path currently includes:
 
-- an ATTiny85 I2C slave sketch
-- a simple master example
 - the [`OptDetect`](./Firmware/I2C/OptDetect) Arduino library
-- an Arduino library example in [`Firmware/I2C/OptDetect/examples`](./Firmware/I2C/OptDetect/examples)
+- a detector-side example sketch in [`Firmware/I2C/OptDetect/examples/LaserLickport_I2C_Slave`](./Firmware/I2C/OptDetect/examples/LaserLickport_I2C_Slave)
+- a host-side example sketch in [`Firmware/I2C/OptDetect/examples/LaserLickport_I2C_Master`](./Firmware/I2C/OptDetect/examples/LaserLickport_I2C_Master)
 
 Use this option when the lick sensor is one part of a larger Arduino or microcontroller system.
 
@@ -83,3 +82,24 @@ Use this option when the lick sensor is one part of a larger Arduino or microcon
 - The current `pyControl` implementation supports both optical and capacitive sensing.
 - The current `Bpod` and `I2C` implementations are focused on the optical channel.
 - Thresholding is handled in different places depending on the firmware path, so behavior and flexibility differ by workflow.
+
+## Versioning
+
+Version tracking in this repository now uses two layers:
+
+- Repo-wide releases are tracked with Git tags such as `v0.1.0`.
+- Firmware and library components are tracked in [`versions.toml`](./versions.toml).
+
+For firmware components, the current version is also declared inside the shipped sketches so a flashed build can be traced back to source more easily:
+
+- [`Firmware/pyControl/LaserLickport_PyControl/LaserLickport_pyControl.ino`](./Firmware/pyControl/LaserLickport_PyControl/LaserLickport_pyControl.ino)
+- [`Firmware/Bpod/LaserLickport_Standalone/LaserLickport_Standalone.ino`](./Firmware/Bpod/LaserLickport_Standalone/LaserLickport_Standalone.ino)
+- [`Firmware/I2C/OptDetect/examples/LaserLickport_I2C_Slave/LaserLickport_I2C_Slave.ino`](./Firmware/I2C/OptDetect/examples/LaserLickport_I2C_Slave/LaserLickport_I2C_Slave.ino)
+- [`Firmware/I2C/OptDetect/examples/LaserLickport_I2C_Master/LaserLickport_I2C_Master.ino`](./Firmware/I2C/OptDetect/examples/LaserLickport_I2C_Master/LaserLickport_I2C_Master.ino)
+
+Suggested bump rules:
+
+- bump the repo tag when publishing a new overall release
+- bump a sketch version when its behavior, pin assumptions, defaults, or compatibility change
+- bump a protocol version only when the on-wire format changes
+- keep the `OptDetect` library version in [`library.properties`](./Firmware/I2C/OptDetect/library.properties) aligned with library changes

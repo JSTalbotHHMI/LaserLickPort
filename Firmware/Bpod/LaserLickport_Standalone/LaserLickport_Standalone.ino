@@ -1,3 +1,7 @@
+// Version identifiers for release tracking.
+#define FIRMWARE_NAME "LaserLickport_Standalone"
+#define FIRMWARE_VERSION "0.1.0"
+
 byte pinSense = A2;
 byte pinThresh = A1;
 byte pinTTL = 0;

@@ -1,0 +1,36 @@
+repo_version = "0.1.0"
+release_tag_prefix = "v"
+
+[components.pycontrol_firmware]
+path = "Firmware/pyControl/LaserLickport_PyControl/LaserLickport_pyControl.ino"
+version = "0.1.0"
+interface = "UART"
+protocol_version = 1
+notes = "Optical and capacitive streaming firmware for pyControl integration."
+
+[components.bpod_firmware]
+path = "Firmware/Bpod/LaserLickport_Standalone/LaserLickport_Standalone.ino"
+version = "0.1.0"
+interface = "TTL"
+notes = "Standalone optical threshold-to-digital-output firmware."
+
+[components.i2c_slave_firmware]
+path = "Firmware/I2C/OptDetect/examples/LaserLickport_I2C_Slave/LaserLickport_I2C_Slave.ino"
+version = "0.1.0"
+interface = "I2C"
+protocol_version = 1
+notes = "ATTiny85 example sketch for the OptDetect library that exposes the latest raw optical reading over I2C."
+
+[components.i2c_master_reference]
+path = "Firmware/I2C/OptDetect/examples/LaserLickport_I2C_Master/LaserLickport_I2C_Master.ino"
+version = "0.1.0"
+interface = "I2C"
+protocol_version = 1
+notes = "Host-side example sketch for polling the detector through the OptDetect library over I2C."
+
+[components.optdetect_library]
+path = "Firmware/I2C/OptDetect/library.properties"
+version = "0.1.0"
+interface = "I2C"
+protocol_version = 1
+notes = "Arduino helper library for talking to the I2C detector slave."

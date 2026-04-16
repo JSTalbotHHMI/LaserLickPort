@@ -25,9 +25,9 @@ The current `Bpod` sketch is a small standalone optical detector. It reads the s
 
 - You want to integrate the lick sensor into your own Arduino or microcontroller project.
 - You want to read the sensor over an I2C bus instead of using a direct TTL output or pyControl UART link.
-- You want a reusable slave sketch plus a small Arduino library and master example.
+- You want a reusable Arduino library with example sketches for the detector.
 
-The current `I2C` implementation is focused on the optical sensor channel and exposes raw optical readings over I2C.
+The current `I2C` implementation is centered on the `OptDetect` library and is focused on the optical sensor channel.
 
 ## Quick comparison
 
@@ -41,7 +41,7 @@ The current `I2C` implementation is focused on the optical sensor channel and ex
 
 - [`pyControl`](./pyControl) contains the pyControl task, device files, GUI API, controls dialog, and ATTiny85 firmware.
 - [`Bpod`](./Bpod) contains a standalone threshold-to-TTL sketch suitable for simple controller input workflows.
-- [`I2C`](./I2C) contains an ATTiny85 I2C slave sketch, a simple master example, and the `OptDetect` Arduino library.
+- [`I2C`](./I2C) contains the `OptDetect` Arduino library plus master and slave example sketches under `OptDetect/examples`.
 
 ## Recommendation
 

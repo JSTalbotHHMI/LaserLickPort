@@ -1,5 +1,10 @@
 #include <TinyWireS.h>
 
+// Version identifiers for release tracking.
+#define FIRMWARE_NAME "LaserLickport_I2C"
+#define FIRMWARE_VERSION "0.1.0"
+#define I2C_DATA_FORMAT_VERSION 1
+
 // byte pinSense = 4;
 // byte pinSense = PIN_PB4;
 byte pinSense = A2;
